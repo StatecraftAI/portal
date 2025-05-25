@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StatecraftAI | AI-powered political strategists</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="StatecraftAI: AI-powered political strategists">
+  <meta name="keywords" content="AI, political strategy, campaign, StatecraftAI, statecrft.ai">
+  <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      width: 100vw;
+      background: #0e0e0e;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #fff;
+    }
+    body {
+      position: relative;
+      min-height: 100vh;
+      width: 100vw;
+    }
+    #bg-animation {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .logo-title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .logo {
+      width: clamp(60px, 13vw, 120px);
+      height: auto;
+      margin-left: 2rem;
+      max-width: 33vw;
+    }
+    .title {
+      font-size: clamp(2.4rem, 10vw, 8rem);
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      word-break: break-word;
+    }
+    .tagline {
+      font-size: clamp(1.2rem, 4vw, 2.5rem);
+      color: #ffffff;
+      margin: 0 0 2rem 0;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .tagline2 {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: #fff;
+      margin-bottom: 1.2rem;
+    }
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+    .signup-form input[type="email"] {
+      padding: 11px 12px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      font-size: 1rem;
+      max-width: 350px;
+      box-sizing: border-box;
+    }
+    .signup-form button {
+      padding: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background-color: #008cff;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1.08rem;
+      font-weight: bold;
+      width: 100%;
+      transition: background 0.17s;
+    }
+    .signup-form button:hover, .signup-form button:focus {
+      background-color: #0091c2;
+    }
+    #thank-you {
+      display: none;
+      color: #00ff00;
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 700px) {
+      .logo-title-container {
+        flex-direction: column;
+        margin-bottom: 1rem;
+      }
+      .logo {
+        margin-left: 0;
+        margin-top: 1.2rem;
+        margin-bottom: 0.8rem;
+      }
+      .title {
+        font-size: clamp(1.7rem, 12vw, 3.6rem);
+      }
+      .tagline {
+        font-size: clamp(1rem, 5vw, 1.6rem);
+        margin-bottom: 1.2rem;
+      }
+      .signup-form input[type="email"] {
+        font-size: 1rem;
+        padding: 10px 8px;
+      }
+      .signup-form button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-animation"></canvas>
+  <div class="container">
+    <div class="logo-title-container">
+      <h1 class="title" style="margin-right: 0;">StatecraftAI</h1>
+      <img src="logo.png" alt="StatecraftAI Logo" class="logo">
+    </div>
+    <h1 class="tagline">AI-powered political strategists</h1>
+    <br><br><br>
+    <p class="tagline2">Get notified when we launch.</p>
+    <form class="signup-form" onsubmit="event.preventDefault(); notify();">
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <button type="submit">Notify Me</button>
+    </form>
+    <p id="thank-you">Thank you! We'll keep you updated.</p>
+  </div>
+  <script>
+    const canvas = document.getElementById('bg-animation');
+    const ctx = canvas.getContext('2d');
+    let w, h, nodes = [];
+    let mouse = {x: null, y: null};
+    
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', () => { resize(); createNodes(); });
+    resize();
+    
+    function Node(x, y, vx, vy, hue) {
+      this.x = x;
+      this.y = y;
+      this.vx = vx;
+      this.vy = vy;
+      this.r = 2.7 + Math.random() * 2.3;
+      this.baseR = this.r;
+      this.hue = hue;
+      this.glow = false;
+      this.pulse = 0;
+    }
+    function createNodes() {
+      nodes = [];
+      let N = Math.floor(w * h / 20000) + 36;
+      for (let i = 0; i < N; i++) {
+        let angle = Math.random() * 2 * Math.PI;
+        let radius = Math.random() * Math.min(w, h) / 1.5;
+        let x = w / 2 + Math.cos(angle) * radius;
+        let y = h / 2 + Math.sin(angle) * radius;
+        let vx = (Math.random() - 0.5) * 0.16;
+        let vy = (Math.random() - 0.5) * 0.26;
+        let hue = 200 + Math.random() * 10;
+        nodes.push(new Node(x, y, vx, vy, hue));
+      }
+    }
+    createNodes();
+    
+    function draw() {
+      let grad = ctx.createRadialGradient(w/2, h/2, w*0.1, w/2, h/2, w*0.7);
+      grad.addColorStop(0, "#16242a66");
+      grad.addColorStop(1, "#0e0e0e");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+    
+      nodes.forEach((node, i) => {
+        if (node.pulse > 0) {
+          node.r = node.baseR + Math.sin(node.pulse/8) * 2.5;
+          node.pulse--;
+        } else if (Math.random() < 0.0007) {
+          node.pulse = 50 + Math.floor(Math.random()*50);
+        } else {
+          node.r = node.baseR;
+        }
+      });
+    
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          let a = nodes[i], b = nodes[j];
+          let dx = a.x - b.x, dy = a.y - b.y;
+          let dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 130) {
+            ctx.save();
+            ctx.globalAlpha = 0.09 + 0.25 * (1 - dist / 130);
+            ctx.strokeStyle = `hsl(${(a.hue+b.hue)/2},80%,65%)`;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.lineWidth = 1 + 0.6 * Math.max(a.r, b.r) / 6;
+            ctx.stroke();
+            ctx.restore();
+          }
+        }
+      }
+    
+      for (let node of nodes) {
+        let px = node.x, py = node.y;    
+        ctx.save();
+        ctx.globalAlpha = 0.78 + (node.pulse > 0 ? 0.13 : 0);
+        ctx.beginPath();
+        ctx.arc(px, py, node.r, 0, 2 * Math.PI);
+        ctx.fillStyle = `hsl(${node.hue},100%,26%)`;
+        ctx.shadowColor = `hsl(${node.hue},90%,78%)`;
+        ctx.shadowBlur = 6 + node.r*2;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    
+    function animate() {
+      for (let node of nodes) {
+        node.x += node.vx;
+        node.y += node.vy;
+        if (node.x < 0 || node.x > w) node.vx *= -1;
+        if (node.y < 0 || node.y > h) node.vy *= -1;
+      }
+      draw();
+      requestAnimationFrame(animate);
+    }
+    animate();
+    function notify() {
+      document.getElementById('thank-you').style.display = 'block';
+      setTimeout(()=>{ document.getElementById('thank-you').style.display = 'none'; }, 5000);
+      document.getElementById('email').value = '';
+    }
+    </script> 
+</body>
+</html>
