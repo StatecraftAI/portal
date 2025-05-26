@@ -1,269 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>StatecraftAI | AI-powered political strategists</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="StatecraftAI: AI-powered political strategists">
-  <meta name="keywords" content="AI, political strategy, campaign, StatecraftAI, statecrft.ai">
-  <link rel="icon" href="logo.png" type="image/png">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      width: 100vw;
-      background: #0e0e0e;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: #fff;
-    }
-    body {
-      position: relative;
-      min-height: 100vh;
-      width: 100vw;
-    }
-    #bg-animation {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .container {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-      box-sizing: border-box;
-      text-align: center;
-    }
-    .logo-title-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-    .logo {
-      width: clamp(60px, 13vw, 120px);
-      height: auto;
-      margin-left: 2rem;
-      max-width: 33vw;
-    }
-    .title {
-      font-size: clamp(2.4rem, 10vw, 8rem);
-      font-weight: bold;
-      margin: 0;
-      line-height: 1.02;
-      letter-spacing: -0.01em;
-      word-break: break-word;
-    }
-    .tagline {
-      font-size: clamp(1.2rem, 4vw, 2.5rem);
-      color: #ffffff;
-      margin: 0 0 2rem 0;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-    }
-    .tagline2 {
-      font-size: clamp(1rem, 2vw, 1.4rem);
-      color: #fff;
-      margin-bottom: 1.2rem;
-    }
-    .signup-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 350px;
-      margin: 0 auto;
-    }
-    .signup-form input[type="email"] {
-      padding: 11px 12px;
-      border: none;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      width: 100%;
-      font-size: 1rem;
-      max-width: 350px;
-      box-sizing: border-box;
-    }
-    .signup-form button {
-      padding: 10px 0;
-      border: none;
-      border-radius: 5px;
-      background-color: #008cff;
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 1.08rem;
-      font-weight: bold;
-      width: 100%;
-      transition: background 0.17s;
-    }
-    .signup-form button:hover, .signup-form button:focus {
-      background-color: #0091c2;
-    }
-    #thank-you {
-      display: none;
-      color: #00ff00;
-      margin-top: 10px;
-      font-size: 1.1rem;
-    }
-    @media (max-width: 700px) {
-      .logo-title-container {
-        flex-direction: column;
-        margin-bottom: 1rem;
-      }
-      .logo {
-        margin-left: 0;
-        margin-top: 1.2rem;
-        margin-bottom: 0.8rem;
-      }
-      .title {
-        font-size: clamp(1.7rem, 12vw, 3.6rem);
-      }
-      .tagline {
-        font-size: clamp(1rem, 5vw, 1.6rem);
-        margin-bottom: 1.2rem;
-      }
-      .signup-form input[type="email"] {
-        font-size: 1rem;
-        padding: 10px 8px;
-      }
-      .signup-form button {
-        font-size: 1rem;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'none';">
+
+  <!-- SEO & Social Meta -->
+  <title>StatecraftAI | AI-powered political toolkit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StatecraftAI: AI-powered political toolkit for research, briefs, and messaging. Unlock the power of AI agents to expand your capacity and win campaigns." />
+  <meta name="keywords" content="AI, political strategy, campaign, StatecraftAI, statecraft.ai, political toolkit, campaign management" />
+  <meta name="author" content="StatecraftAI">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://statecrft.ai">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="StatecraftAI | AI-powered political toolkit">
+  <meta property="og:description" content="Unlock the power of AI agents to craft research, briefs, and messaging. Expand your capacity, gain clarity, and save time to mobilize and win.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://statecrft.ai">
+  <meta property="og:image" content="https://statecrft.ai/logo.png">
+  <meta property="og:image:alt" content="StatecraftAI Logo">
+  <meta property="og:site_name" content="StatecraftAI">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="StatecraftAI | AI-powered political toolkit">
+  <meta name="twitter:description" content="AI-powered political toolkit for research, briefs, and messaging">
+  <meta name="twitter:image" content="https://statecrft.ai/logo.png">
+  <meta name="twitter:image:alt" content="StatecraftAI Logo">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+
+  <!-- Enhanced Favicon Suite -->
+  <link rel="icon" type="image/png" sizes="192x192" href="favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicons/android-chrome-512x512.png">
+  <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#3B82F6">
+  <link rel="manifest" href="favicons/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#3B82F6">
+  <meta name="msapplication-TileImage" content="favicons/mstile-150x150.png">
+  <meta name="theme-color" content="#3B82F6">
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="css/styles.css" as="style">
+  <link rel="preload" href="logo.png" as="image">
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- DNS Prefetch for external resources (if any) -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
 </head>
+
 <body>
-  <canvas id="bg-animation"></canvas>
-  <div class="container">
-    <div class="logo-title-container">
-      <h1 class="title" style="margin-right: 0;">StatecraftAI</h1>
-      <img src="logo.png" alt="StatecraftAI Logo" class="logo">
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+
+  <!-- Background Animation Canvas -->
+  <canvas id="bg-animation" aria-hidden="true"></canvas>
+  
+  <!-- Main Content -->
+  <main id="main-content" class="container">
+    <header class="logo-title-container">
+      <h1 class="title">StatecraftAI</h1>
+      <img src="logo.png" alt="StatecraftAI Logo - AI-powered political toolkit" class="logo" width="120" height="120" />
+    </header>
+    
+    <section class="hero-content">
+      <h2 class="tagline">Do More Than Humanly Possible.</h2>
+      <p class="subhead">
+        Unlock the power of AI agents to craft research, briefs, and messaging. Expand your capacity, gain clarity, and
+        save time to <span style="font-weight:bold; color: #48f3ff">MOBILIZE</span> and <span
+          style="font-weight:bold; color: #48f3ff">WIN</span>.
+      </p>
+    </section>
+
+    <section class="signup-section" aria-labelledby="signup-heading">
+      <h3 id="signup-heading" class="tagline2">Get notified when we launch.</h3>
+      <form class="signup-form" action="https://formsubmit.co/info@statecrft.ai" method="POST" novalidate aria-describedby="form-description">
+        <div class="sr-only" id="form-description">
+          Enter your email address to receive notifications about StatecraftAI's launch.
+        </div>
+        
+        <!-- FormSubmit Configuration -->
+        <input type="hidden" name="_subject" value="New StatecraftAI Launch Notification Signup">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://statecrft.ai/?success=true">
+        
+        <label for="email" class="sr-only">Email address</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email" 
+          required 
+          autocomplete="email"
+          aria-describedby="email-help"
+          maxlength="254"
+        />
+        <div id="email-help" class="sr-only">
+          We'll only use your email to notify you about our launch. We won't spam you.
+        </div>
+        <button type="submit" aria-describedby="submit-help">Notify Me</button>
+        <div id="submit-help" class="sr-only">
+          Click to subscribe to launch notifications
+        </div>
+      </form>
+      <p id="thank-you" role="status" aria-live="polite">Thank you! We'll keep you updated.</p>
+    </section>
+  </main>
+
+  <!-- Footer for additional info -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-logo">
+          <img src="logo.png" alt="StatecraftAI Logo" width="28" height="28">
+        </span>
+        <span class="footer-name">StatecraftAI</span>
+        <span class="footer-copyright">&copy; 2025 StatecraftAI. All rights reserved.</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://twitter.com/Statecraft_AI" target="_blank" rel="noopener" aria-label="Twitter" class="footer-social">
+          <svg height="22" width="22" viewBox="0 0 24 24" fill="none" stroke="#aeeaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016.5 2a4.48 4.48 0 00-4.48 4.48v1A12.94 12.94 0 013 4s-4 9 5 13a13 13 0 01-7 2c13 8 21-4 21-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/statecraftai" target="_blank" rel="noopener" aria-label="LinkedIn" class="footer-social">
+          <svg height="22" width="22" viewBox="0 0 24 24" fill="none" stroke="#aeeaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="mailto:info@statecrft.ai" aria-label="Email" class="footer-social">
+          <svg height="22" width="22" viewBox="0 0 24 24" fill="none" stroke="#aeeaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" ry="2"/><polyline points="3 7 12 13 21 7"/></svg>
+        </a>
+      </div>
     </div>
-    <h1 class="tagline">AI-powered political strategists</h1>
-    <br><br><br>
-    <p class="tagline2">Get notified when we launch.</p>
-    <form class="signup-form" onsubmit="event.preventDefault(); notify();">
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
-      <button type="submit">Notify Me</button>
-    </form>
-    <p id="thank-you">Thank you! We'll keep you updated.</p>
-  </div>
-  <script>
-    const canvas = document.getElementById('bg-animation');
-    const ctx = canvas.getContext('2d');
-    let w, h, nodes = [];
-    let mouse = {x: null, y: null};
-    
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', () => { resize(); createNodes(); });
-    resize();
-    
-    function Node(x, y, vx, vy, hue) {
-      this.x = x;
-      this.y = y;
-      this.vx = vx;
-      this.vy = vy;
-      this.r = 2.7 + Math.random() * 2.3;
-      this.baseR = this.r;
-      this.hue = hue;
-      this.glow = false;
-      this.pulse = 0;
-    }
-    function createNodes() {
-      nodes = [];
-      let N = Math.floor(w * h / 20000) + 36;
-      for (let i = 0; i < N; i++) {
-        let angle = Math.random() * 2 * Math.PI;
-        let radius = Math.random() * Math.min(w, h) / 1.5;
-        let x = w / 2 + Math.cos(angle) * radius;
-        let y = h / 2 + Math.sin(angle) * radius;
-        let vx = (Math.random() - 0.5) * 0.16;
-        let vy = (Math.random() - 0.5) * 0.26;
-        let hue = 200 + Math.random() * 10;
-        nodes.push(new Node(x, y, vx, vy, hue));
+  </footer>  
+
+  <!-- JavaScript Files -->
+  <script src="js/security.js" defer></script>
+  <script src="js/animation.js" defer></script>
+  <script src="js/form.js" defer></script>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "StatecraftAI",
+    "url": "https://statecrft.ai",
+    "logo": "https://statecrft.ai/logo.png",
+    "description": "AI-powered political toolkit for research, briefs, and messaging",
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Fallback for users with JavaScript disabled -->
+  <noscript>
+    <style>
+      .signup-form button {
+        background-color: #666;
+        cursor: not-allowed;
       }
-    }
-    createNodes();
-    
-    function draw() {
-      let grad = ctx.createRadialGradient(w/2, h/2, w*0.1, w/2, h/2, w*0.7);
-      grad.addColorStop(0, "#16242a66");
-      grad.addColorStop(1, "#0e0e0e");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-    
-      nodes.forEach((node, i) => {
-        if (node.pulse > 0) {
-          node.r = node.baseR + Math.sin(node.pulse/8) * 2.5;
-          node.pulse--;
-        } else if (Math.random() < 0.0007) {
-          node.pulse = 50 + Math.floor(Math.random()*50);
-        } else {
-          node.r = node.baseR;
-        }
-      });
-    
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          let a = nodes[i], b = nodes[j];
-          let dx = a.x - b.x, dy = a.y - b.y;
-          let dist = Math.sqrt(dx*dx + dy*dy);
-          if (dist < 130) {
-            ctx.save();
-            ctx.globalAlpha = 0.09 + 0.25 * (1 - dist / 130);
-            ctx.strokeStyle = `hsl(${(a.hue+b.hue)/2},80%,65%)`;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.lineWidth = 1 + 0.6 * Math.max(a.r, b.r) / 6;
-            ctx.stroke();
-            ctx.restore();
-          }
-        }
+      .signup-form button:after {
+        content: " (JavaScript required)";
+        font-size: 0.8em;
       }
-    
-      for (let node of nodes) {
-        let px = node.x, py = node.y;    
-        ctx.save();
-        ctx.globalAlpha = 0.78 + (node.pulse > 0 ? 0.13 : 0);
-        ctx.beginPath();
-        ctx.arc(px, py, node.r, 0, 2 * Math.PI);
-        ctx.fillStyle = `hsl(${node.hue},100%,26%)`;
-        ctx.shadowColor = `hsl(${node.hue},90%,78%)`;
-        ctx.shadowBlur = 6 + node.r*2;
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-    
-    function animate() {
-      for (let node of nodes) {
-        node.x += node.vx;
-        node.y += node.vy;
-        if (node.x < 0 || node.x > w) node.vx *= -1;
-        if (node.y < 0 || node.y > h) node.vy *= -1;
-      }
-      draw();
-      requestAnimationFrame(animate);
-    }
-    animate();
-    function notify() {
-      document.getElementById('thank-you').style.display = 'block';
-      setTimeout(()=>{ document.getElementById('thank-you').style.display = 'none'; }, 5000);
-      document.getElementById('email').value = '';
-    }
-    </script> 
+    </style>
+    <div style="position: fixed; top: 0; left: 0; right: 0; background: #ff4444; color: white; padding: 10px; text-align: center; z-index: 9999;">
+      JavaScript is required for the full experience. Please enable JavaScript in your browser.
+    </div>
+  </noscript>
 </body>
+
 </html>

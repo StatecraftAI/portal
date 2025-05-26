@@ -1,0 +1,357 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+  background: #0e0e0e;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #fff;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+#bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  width: clamp(60px, 13vw, 120px);
+  height: auto;
+  max-width: 33vw;
+}
+
+.title {
+  font-size: clamp(2.4rem, 14vw, 8rem);
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+}
+
+.tagline {
+  font-size: clamp(1.2rem, 7vw, 3rem);
+  color: #ffffff;
+  margin: 0 0 1.1rem 0;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 0 18px #00baff77,
+    0 0 32px #089ee855,
+    0 0 2px #fff;
+  transition: text-shadow 0.2s;
+}
+
+.subhead {
+  position: relative;
+  font-size: clamp(1.18rem, 2.7vw, 2rem);
+  color: #e7f7ff;
+  margin: 1rem auto 4rem auto;
+  text-align: center;
+  max-width: 600px;
+  z-index: 1;
+  display: inline-block;
+}
+
+.subhead::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -5%;
+  width: 110%;
+  height: 120%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.57) 0%, rgba(0, 0, 0, 0.36) 42%, rgba(0, 0, 0, 0.5) 90%);
+  filter: blur(10px);
+  border-radius: 32px;
+  opacity: 0.5;
+}
+
+.tagline2 {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.signup-form input[type="email"] {
+  padding: 11px 12px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 1rem;
+  max-width: 350px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+  transition: box-shadow 0.2s ease;
+}
+
+.signup-form input[type="email"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #48f3ff;
+}
+
+.signup-form input[type="email"]:invalid {
+  box-shadow: 0 0 0 2px #ff4444;
+}
+
+.signup-form button {
+  padding: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #48f3ff;
+  color: #10141c;
+  cursor: pointer;
+  font-size: 1.08rem;
+  font-weight: bold;
+  width: 100%;
+  transition: background 0.17s ease;
+}
+
+.signup-form button:hover,
+.signup-form button:focus {
+  background-color: #0091c2;
+  outline: none;
+}
+
+.signup-form button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+#thank-you {
+  display: none;
+  color: #00ff00;
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  display: none;
+  color: #ff4444;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/* Footer */
+.site-footer {
+  width: 100vw;
+  background: #11191f;
+  border-top: 1.5px solid #212e38;
+  color: #aeeaff;
+  padding: 1.12rem 0 1.12rem 0;
+  position: relative;
+  font-size: 1rem;
+  z-index: 2;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo img {
+  border-radius: 6px;
+  background: #232d35;
+  padding: 2px;
+}
+
+.footer-name {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #aeeaff;
+  font-size: 1.07rem;
+  margin-right: 0.5em;
+}
+
+.footer-copyright {
+  color: #7cb0cc;
+  font-size: 0.95rem;
+  margin-left: 0.6em;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 1.22rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.18s, transform 0.17s;
+}
+.footer-social:hover,
+.footer-social:focus {
+  opacity: 1;
+  transform: scale(1.18);
+}
+
+@media (max-width: 700px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.7em;
+    padding: 0 0.6em;
+  }
+  .footer-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .footer-right {
+    margin-top: 0.4rem;
+    margin-bottom: 0;
+    gap: 1.05rem;
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #48f3ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus indicators */
+*:focus {
+  outline: 2px solid #48f3ff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .logo-title-container {
+    flex-direction: column-reverse;
+    gap: 0.8rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    max-width: 100px;
+    width: 200px;
+    height: auto;
+    display: block;
+  }
+
+  .title {
+    font-size: clamp(1.7rem, 12vw, 4rem);
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 7vw, 2rem);
+    margin-bottom: 1.2rem;
+  }
+
+  .signup-form input[type="email"] {
+    font-size: 1rem;
+    padding: 10px 8px;
+  }
+
+  .signup-form button {
+    font-size: 1rem;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .tagline {
+    transition: none;
+  }
+  
+  .signup-form input[type="email"],
+  .signup-form button {
+    transition: none;
+  }
+  
+  .spinner {
+    animation: none;
+  }
+} 

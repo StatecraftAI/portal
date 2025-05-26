@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /favicons/
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+
+# Disallow sensitive files and directories
+Disallow: /.htaccess
+Disallow: /.git/
+Disallow: /logs/
+Disallow: /tmp/
+Disallow: /backup/
+Disallow: /*.log
+Disallow: /*.bak
+Disallow: /*.old
+
+# Sitemap location
+Sitemap: https://statecrft.ai/sitemap.xml
+
+# Crawl delay (optional - adjust as needed)
+Crawl-delay: 1 
