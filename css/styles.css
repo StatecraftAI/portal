@@ -138,7 +138,7 @@ body {
 }
 
 .signup-form input[type="email"]:invalid {
-  box-shadow: 0 0 0 2px #ff4444;
+  box-shadow: 0 0 0 2px #000000;
 }
 
 .signup-form button {
