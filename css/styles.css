@@ -134,7 +134,7 @@ body {
 
 .signup-form input[type="email"]:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #48f3ff;
+  box-shadow: 0 0 0 2px #95e3ff;
 }
 
 .signup-form input[type="email"]:invalid {
@@ -145,7 +145,7 @@ body {
   padding: 10px 0;
   border: none;
   border-radius: 5px;
-  background-color: #48f3ff;
+  background-color: #95e3ff;
   color: #10141c;
   cursor: pointer;
   font-size: 1.08rem;
@@ -219,15 +219,15 @@ body {
 .footer-name {
   font-weight: 700;
   letter-spacing: 0.01em;
-  color: #aeeaff;
+  color: #95e3ff;
   font-size: 1.07rem;
   margin-right: 0.5em;
 }
 
 .footer-copyright {
   color: #7cb0cc;
-  font-size: 0.95rem;
-  margin-left: 0.6em;
+  font-size: 0.8rem;
+  margin-left: 2em;
 }
 
 .footer-right {
